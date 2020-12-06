@@ -77,7 +77,7 @@ przedmiot *wczytaj_przedmiot(FILE *fin)
         przed->nazwa = (char *)malloc(sizeof(char) * (strlen(s) + 1));
         strcpy(przed->nazwa, s);
 
-        s = strtok(NULL, ";");
+        s = strtok(NULL, "\n");
         przed->semestr = (char *)malloc(sizeof(char) * (strlen(s) + 1));
         strcpy(przed->semestr, s);
     }
@@ -120,7 +120,7 @@ ocena *wczytaj_ocene(FILE *fin)
         s = strtok(NULL, ";");
         _ocena->liczba = atof(s);
 
-        s = strtok(NULL, ";");
+        s = strtok(NULL, "\n");
         _ocena->kometarz = (char *)malloc(sizeof(char) * (strlen(s) + 1));
         strcpy(_ocena->kometarz, s);
     }
@@ -143,42 +143,6 @@ sbaza *wczytaj_baze(char *nazwa_pliku)
 
     fclose(fin);
     return baza;
-}
-
-sbaza *zapisz_baze(char *nazwa_pliku, sbaza *baza)
-{
-    int a = ile_studentow(baza);
-    int b = ile_przedmiotow(baza);
-    int c = ile_ocen(baza);
-
-    FILE *fin = fopen(nazwa_pliku, "w+");
-    student *stud = baza->lista_studentow;
-    przedmiot *przed = baza->lista_przedmiotow;
-    ocena *_ocena = baza->lista_ocen;
-
-    fprintf(fin, "%d\n", a);
-    while (stud != NULL)
-    {
-        fprintf(fin, "%s;%s;%s;%s\n", stud->imie, stud->nazwisko, stud->nr_albumu, stud->email);
-        stud = stud->nast;
-    }
-
-    fprintf(fin, "%d\n", b);
-    while (przed != NULL)
-    {
-        fprintf(fin, "%s;%s;%s\n", przed->kod_przedmiotu, przed->nazwa, przed->semestr);
-        przed = przed->nast;
-    }
-
-    fprintf(fin, "%d\n", c);
-    while (_ocena != NULL)
-    {
-        fprintf(fin, "%s;%s;%f;%s\n", _ocena->nr_albumu, _ocena->kod, _ocena->liczba, _ocena->kometarz);
-        _ocena = _ocena->nast;
-    }
-     
-    fclose(fin);
-    return NULL;
 }
 
 int ile_studentow(sbaza *baza)
@@ -217,6 +181,43 @@ int ile_ocen(sbaza *baza)
     return n;
 }
 
+sbaza *zapisz_baze(char *nazwa_pliku, sbaza *baza)
+{
+    int a = ile_studentow(baza);
+    int b = ile_przedmiotow(baza);
+    int c = ile_ocen(baza);
+
+    FILE *fin = fopen(nazwa_pliku, "w+");
+    student *stud = baza->lista_studentow;
+    przedmiot *przed = baza->lista_przedmiotow;
+    ocena *_ocena = baza->lista_ocen;
+
+    fprintf(fin, "%d\n", a);
+    while (stud != NULL)
+    {
+        fprintf(fin,"%s;%s;%s;%s\n", stud->imie, stud->nazwisko, stud->nr_albumu, stud->email);
+        stud = stud->nast;
+    }
+
+    fprintf(fin, "%d\n", b);
+    while (przed != NULL)
+    {
+        fprintf(fin, "%s;%s;%s\n", przed->kod_przedmiotu, przed->nazwa, przed->semestr);
+        przed = przed->nast;
+    }
+
+    fprintf(fin, "%d\n", c);
+    while (_ocena != NULL)
+    {
+        fprintf(fin, "%s;%s;%f;%s\n", _ocena->nr_albumu, _ocena->kod, _ocena->liczba, _ocena->kometarz);
+        _ocena = _ocena->nast;
+    }
+
+    return NULL;
+}
+
+
+
 void listuj_studentow(sbaza *baza)
 {
     student *stud = baza->lista_studentow;
@@ -232,16 +233,12 @@ void dodaj_studentow(sbaza *baza, char *imie, char *nazwisko, char *nr_albumu, c
     student *nowy = (student *)malloc(sizeof(student));
     student *kolejny = NULL;
     nowy->nast = NULL;
-
     nowy->imie = (char *)malloc(sizeof(char) * (strlen(imie) + 1));
     strcpy(nowy->imie, imie);
-
     nowy->nazwisko = (char *)malloc(sizeof(char) * (strlen(nazwisko) + 1));
     strcpy(nowy->nazwisko, nazwisko);
-
     nowy->nr_albumu = (char *)malloc(sizeof(char) * (strlen(nr_albumu) + 1));
     strcpy(nowy->nr_albumu, nr_albumu);
-
     nowy->email = (char *)malloc(sizeof(char) * (strlen(email) + 1));
     strcpy(nowy->email, email);
     kolejny = baza->lista_studentow;
@@ -250,7 +247,6 @@ void dodaj_studentow(sbaza *baza, char *imie, char *nazwisko, char *nr_albumu, c
     {
         baza->lista_studentow = nowy;
     }
-
     else
     {
         for (int i = 1; i < ile_studentow(baza); i++)

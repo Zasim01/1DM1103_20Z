@@ -2,7 +2,6 @@
 #include <stdlib.h>
 
 #include "baza.h"
-
 int main(int argc, char**argv)
 {
     sbaza*baza;
@@ -32,7 +31,8 @@ int main(int argc, char**argv)
 
     }
 
-    else if(strcmp("count_students", argv[2]) == 0){
+    else if(strcmp("count_students", argv[2]) == 0)
+    {
         printf("Liczba studentów to %d\n",ile_studentow(baza));
     }
 

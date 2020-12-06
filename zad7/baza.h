@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct _student {
+   typedef struct _student {
     char * imie;
     char * nazwisko;
     char * nr_albumu;
