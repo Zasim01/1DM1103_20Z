@@ -17,4 +17,4 @@ test_przedmiot:
 	valgrind ./mydb baza.csv add_subject  1DA1245 Matematyka 2020Z
 
 test_ocena:
-	valgrind ./mydb baza.csv add_student  1DE2103 00009 5 buuu
+	valgrind ./mydb baza.csv add_grade  1DE2103 00009 5 buuu
