@@ -1,0 +1,16 @@
+5
+Robert;Kowalski;123456;ala@ala.pl
+Jan;Nowak;0000007;brak@brak.pl
+Grzegorz;Schetynski;00000001;nie@nie.pl
+Alicja;Wiśniewska;00009;bu@bu.pl
+Julian;Zych;923456;ale@ala.pl
+3
+1DE2103;Numerical methods;2020Z
+1AAA1245;English;2020Z
+1DA1245;Algorithms and python;2020Z
+5
+1DE2103;0000007;0.000000; 
+1DA1245;0000007;2.000000;Beznadziejny projekt!
+1DE2103;123456;0.000000; 
+1DA1245;00000001;3.000000;Super!
+1DE2103;00009;5.000000;buuu
