@@ -1,0 +1,25 @@
+student@komputer:~/Documents/PRACE/seminarium/curl$ ./a.out  M R L
+HTTP/1.0 200 OK
+Content-Type: application/json
+Content-Length: 200
+Access-Control-Allow-Origin: *
+Server: Werkzeug/1.0.1 Python/3.6.9
+Date: Fri, 18 Dec 2020 21:26:33 GMT
+
+{"status": "Success", "payload": {"name": "First world 36", "current_x": 4, "current_y": 3, "current_session": "pierwsza_36", "direction": "N", "step": 401, "field_type": "grass", "field_bonus": ""}}
+HTTP/1.0 200 OK
+Content-Type: application/json
+Content-Length: 200
+Access-Control-Allow-Origin: *
+Server: Werkzeug/1.0.1 Python/3.6.9
+Date: Fri, 18 Dec 2020 21:26:33 GMT
+
+{"status": "Success", "payload": {"name": "First world 36", "current_x": 4, "current_y": 3, "current_session": "pierwsza_36", "direction": "E", "step": 402, "field_type": "grass", "field_bonus": ""}}
+HTTP/1.0 200 OK
+Content-Type: application/json
+Content-Length: 200
+Access-Control-Allow-Origin: *
+Server: Werkzeug/1.0.1 Python/3.6.9
+Date: Fri, 18 Dec 2020 21:26:34 GMT
+
+{"status": "Success", "payload": {"name": "First world 36", "current_x": 4, "current_y": 3, "current_session": "pierwsza_36", "direction": "N", "step": 403, "field_type": "grass", "field_bonus": ""}}
